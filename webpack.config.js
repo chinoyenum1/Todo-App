@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -13,7 +14,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Todo App',
+      template: './src/index.html',
     }),
+    new CleanWebpackPlugin(),
   ],
   output: {
     filename: '[name].bundle.js',
@@ -34,6 +37,10 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+      }
     ],
   },
   optimization: {
