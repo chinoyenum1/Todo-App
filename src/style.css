@@ -24,7 +24,6 @@ body{
           "project task  task" 
           /minmax(100px, 350px) 1fr minmax(250px, 500px);
     justify-content: center;
-    /* align-items: center; */
 
 }
 
@@ -35,39 +34,50 @@ header{
     display: flex;
     justify-content: center;
     padding: .2em 2em;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: bolder;
 }
 
 .project-pane{
-    min-height: 90vh;
+    min-height: 95vh;
     grid-area: project;
     background-color: #faf5f5;
-    /* padding: 1rem 0rem; */
     display: flex;
     flex-direction: column;
 }
 
-.pane-heading{
-    font-size: 1.4rem;
-    /* margin: 1.2rem 0; */
-    padding-bottom: 1.3rem;
-    padding-top: 3.1rem;
+.pane-header{
     background-color: #5f032b;
     color: #bdbcbc;
-    border-top: 3px solid #000;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .6rem 0;
+}
+
+.pane-heading{
+    font-size: 1.5rem;
+    
 }
 
 .project-list{
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    gap: .2rem;    
+    gap: .3rem;    
 
 }
 
+.task-count{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-count span{
+    color: blue;
+}
+
 .project{
-    border: 1px solid #d7d6d6;
     padding: .2em;
     cursor: pointer;
     transition: 0.5s;
@@ -76,16 +86,16 @@ header{
     border: 1px solid #c7075a;
 }
 
-.active, .project:hover{
+.active{
     border: 2px solid #bdbcbc;
     background-color: #f9c7c7;
     opacity: .5;
 }
 
-/* .project:hover{
-    border: 2px solid #bdbcbc;
-    background-color: #f9e2e2;
-} */
+.project:hover{
+    border: 2px solid #f6e9e9;
+    background-color: #f6e5ed;
+}
 
 .project h6, .project p{
     pointer-events: none;
@@ -155,6 +165,8 @@ header{
     display: flex;
     align-items: center;
     gap: .3rem;
+    cursor: pointer;
+
 }
 .delete-project span{
     font-weight: 900;
@@ -173,8 +185,7 @@ header{
     grid-area: task;
     display: flex;
     flex-direction: column;
-    /* padding: 0 2vw; */
-    /* border: 1px solid black; */
+    
 }
 
 .task-pane-header{
@@ -182,6 +193,8 @@ header{
     align-items: center;
     justify-content: space-around;
     background-color: #f9c7c7;
+    background-color: #5f032b;
+    color: #d1cbcb;
     padding: .5rem 2rem;
     height: 3rem;
     box-shadow: 3px 3px 5px #d3d0d0;
@@ -189,6 +202,7 @@ header{
 
 .task-pane-header h3{
     font-size: 1.5rem;
+    width: 50%;
 }
 
 .task-complete-count{
@@ -214,7 +228,6 @@ header{
     text-align: center;
     padding: .8rem;
     font-size: 1.3rem;
-    border-bottom: 3px solid #000;
     background-color: #5f032b;
     color: #bdbcbc;
 }
@@ -223,45 +236,94 @@ header{
     display: flex;
     flex-direction: column;
     padding: 0 .3rem;
+    gap: .3rem;
 }
+
+
 
 .task{
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem .2rem;
-    border-bottom: 1px solid #5f032b;
-    transition: 0.2s;
+    padding: 0.5rem 0rem;
+    border-radius: 5px;
+    transition: 0.5s;
 }
 
 .task:nth-child(odd){
-    background-color: #f1d3d3;
+    background-color: #f6e9e9;
 }
 
 .task:nth-child(even){
-    background-color: #dff8c5;
-    background-color: #faf1f1;
+    background-color: #eaf8dc;
 }
 
 .task:hover{
-    opacity: .6;
+    border: 1px solid #5f032b;
+    opacity: .8;
     cursor: pointer;
-    
 }
+
 
 .priority, .edit-task{
     margin: 0 1rem;
 }
 
-.date{
+button.priority{
+    background-color: none;
+    border: 0;
+    padding: 0;
+    font-weight: 900;
+}
+
+.high{
     color: red;
+
+}
+.low{
+    color: darkgreen;
+}
+.medium{
+    color: blue;
+}
+
+.none{
+    color: grey;
+}
+
+.duedate{
+    color: blue;
     margin-right: auto;
     font-size: 1.3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.date div{
+    margin-left: 1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .3rem;
+    border-radius: 5px;
+    font-weight: 900;
+    color: #5f032b;
+    width: 70px; 
+    padding: 0 .8rem;
+}
+
+.month, .year{
+    font-size: .7rem;
+}
+
+.day{
+    font-size: .8rem;
 }
 
 .task-title{
-    font-size: 1.2vw;
+    font-size: 1vw;
     margin-right: auto;
     justify-self: left;
     color: #3c3a3a;
@@ -286,7 +348,12 @@ header{
     color: #340318;
 }
 
-#form-task{
+div.complete{
+    text-decoration-line: line-through;
+    opacity: .5;
+}
+
+/* #form-task{
     width: 40%;
     align-self: flex-end;
     margin-top: auto;
@@ -325,7 +392,7 @@ input::placeholder{
 #form-task input:focus, 
 #form-task input:hover{
  background-color: #f8dfea;
-}
+} */
 
 .task-add{
     margin-top: auto;
@@ -405,7 +472,6 @@ input::placeholder{
 
 .modal form{
     border: 2px solid white;
-    /* background-color: #c7075a; */
     color: #c7075a;
     padding: 1rem;
     display: flex;
@@ -428,15 +494,11 @@ input::placeholder{
     border-left: 1px solid #fff;
     width: 100%;
     color: #340318;;
-    font-size: 1.6vw;
+    font-size: 1.2vw;
     padding: .2rem;
 }
 
-/* .modal input[type='text']:focus{
-    background-color: #f61174;
-} */
-
-.new-task-description, .new-task-note{
+.new-task-description{
     display: flex;
     flex-direction: column;
     gap: .2rem;
@@ -450,7 +512,7 @@ textarea{
 }
 
 .modal label{
-    font-size: 1.5vw;
+    font-size: 1.1vw;
     font-weight: 600;
 }
 

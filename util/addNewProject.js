@@ -1,13 +1,11 @@
 import { projectLibrary, save } from "../util/projectLibrary";
-// import { save } from "../utils/project-library";
 import { render } from "../util/render";
-
-
+import { format} from "date-fns";
 
 const newProjectFormInput = document.querySelector(".new-project");
 
 
-export function addNewProject(e) {
+function addNewProject(e) {
     e.preventDefault();
     let title = newProjectFormInput.value;
     if (title == "" || title == null) {
@@ -18,14 +16,15 @@ export function addNewProject(e) {
     save();
     render();
 
-    // create_new_project_form.reset();
     newProjectFormInput.value = ``
 }
 
 function createProject(title) {
   return {
-      id: Date.now().toString(),
+      id: format(new Date(), 'T'),
       title: title,
       tasks: []    
   }
 }
+
+export {addNewProject}

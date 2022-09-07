@@ -4,7 +4,7 @@ import { projectLibrary, setSelectedProjectId, setSelectedProject } from "../uti
 
 
 
-export function setActiveProject(e) {
+function setActiveProject(e) {
     const target = e.target.tagName.toLowerCase()
     if (target == 'div') {
         projectLibrary().selectedProjectId = setSelectedProjectId(e.target.dataset.projectId); 
@@ -15,3 +15,5 @@ export function setActiveProject(e) {
         
     }
 }
+
+export {setActiveProject}
