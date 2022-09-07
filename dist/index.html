@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily plans</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- <link rel="stylesheet" href="./style.css"> -->
+    
+<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script></head>
+<body>
+    <div class="grid">
+        <!-- <header>My Daily Plans</header> -->
+        <div class="project-pane">
+            <div class="pane-header">
+                <span class="material-symbols-rounded">
+                    task
+                    </span>
+                <h4 class="pane-heading">My Projects</h4>
+            </div>
+            <div class="project-list"></div>
+
+            <form id="form-project">
+                <input type="text" class="new-project" placeholder="Enter new project name">
+                <button class="btn">+</button>
+            </form>
+            <div class="project-delete">
+                
+                <button class="delete-project"><p>Delete Selected Project</p><span class="material-symbols-rounded">
+                    delete
+                    </span></button>
+            </div>
+        </div>
+        <!-- Tasks list display -->
+        <div class="task-pane">
+            <div class="task-pane-header">
+                <h3 class="project-header"></h3>
+                <div class="task-complete-count">
+                    <p class="completed"></p>
+                    <p class="incomplete"></p>
+                </div>
+            </div>
+            <div class="task-pane-body">
+                <!-- <div class='task-list-header-container'>
+                    <h5 class='task-list-header'>Task List</h5>
+                </div> -->
+                <div class="task-list">
+                    
+                </div>
+                
+            </div>
+            
+            <div class="task-add">
+                <p>Add new task</p><span class="material-symbols-rounded">
+                    arrow_forward
+                    </span>
+                <button class="btn create">+</button>
+            </div>
+
+            <!-- Modal from for new task -->
+            <dialog class="modal">
+                <header>
+                    <p>Create/Edit Task</p>
+                    <span class="material-symbols-rounded close-btn">
+                        close
+                        </span>
+                </header>
+                <main class="dialog-content">
+                    <form id="create-task">
+                        <div class="new-task-title">
+                            <label for="title">Title </label>
+                            <input type="text" id="task-title" required />
+                        </div>
+                        <div class="new-task-description">
+                            <label for="desc">Description </label>
+                            <textarea name="desc" id="desc" cols="30" rows="3"></textarea>
+                        </div>
+                        <div class="new-task-date">
+                            <label for="date">Due Date</label>
+                            <input type="date" id="task-date" required/>
+                        </div>
+                        <div class="priority-completed">
+                            <div class="new-task-priority">
+                                <label for="priority">Priority</label>
+                                <select name="priority" id="priority">
+                                    <option value="high">High</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="low">Low</option>
+                                    <option value="none">None</option>
+                                </select>
+                            </div>
+                            <div class="new-task-completed">
+                                <input type="checkbox" id="completed" />
+                                <label for="completed">Completed </label>
+                            </div>
+                        </div>
+                        <!-- <div class="new-task-note">
+                            <label for="note">Note </label>
+                            <textarea name="note" id="note" cols="30" rows="5"></textarea>
+                        </div> -->
+                        <input type="submit" value="Submit">
+                    </form>
+                </main>
+            </dialog>
+        </div>
+    </div>
+    <template class="task-template">
+        <div class='task'>
+            <button class='priority'></button>
+            <p class='date'></p>
+            <h6 class='task-title'></h6>
+            <button class='edit-task'></button>
+            <button class='delete-task'></button>
+        </div>
+    </template>
+
+    <script src="813270cb643a7223b1c9.js"></script>
+</body>
+</html>
